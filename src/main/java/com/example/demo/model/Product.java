@@ -12,7 +12,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    private String productName;
+    private String product_name;
     private Long price;
     private String description;
     private String imageURL;
@@ -20,8 +20,8 @@ public class Product {
 
     public Product(){}
 
-    public Product(String productName, Long price, String description, String imageURL, Long quantity){
-        this.productName = productName;
+    public Product(String product_name, Long price, String description, String imageURL, Long quantity){
+        this.product_name = product_name;
         this.price = price;
         this.description = description;
         this.imageURL = imageURL;
@@ -34,7 +34,7 @@ public class Product {
     }
 
     public void setProductName(String productName) {
-        this.productName = productName;
+        this.product_name = productName;
     }
 
     public void setPrice(Long price) {
@@ -54,7 +54,7 @@ public class Product {
     }
 
     public String getProductName() {
-        return productName;
+        return product_name;
     }
 
     public String getDescription() {
@@ -86,7 +86,7 @@ public class Product {
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", productName='" + productName + '\'' +
+                ", productName='" + product_name + '\'' +
                 ", price=" + price +
                 ", description='" + description + '\'' +
                 ", imageURL='" + imageURL + '\'' +

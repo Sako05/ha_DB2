@@ -29,6 +29,13 @@ public class ProductController {
         return "Product was saved";
     }
 
+    @PostMapping(path="/add")
+    public @ResponseBody String addProductByPost(@RequestParam String product_name, @RequestParam Long price, @RequestParam String description, @RequestParam String imageURL, @RequestParam Long quantity){
+        Product b = new Product(product_name, price,description,imageURL,quantity);
+        productRepo.save(b);
+        return "Saved";
+    }
+
     @GetMapping(path="/all")
     public @ResponseBody
     List<Product> getAllProducts(){
