@@ -1,9 +1,6 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Entity
@@ -12,7 +9,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    private String product_name;
+    private String title;
     private Long price;
     private String description;
     private String imageURL;
@@ -20,8 +17,8 @@ public class Product {
 
     public Product(){}
 
-    public Product(String product_name, Long price, String description, String imageURL, Long quantity){
-        this.product_name = product_name;
+    public Product(String title, Long price, String description, String imageURL, Long quantity){
+        this.title = title;
         this.price = price;
         this.description = description;
         this.imageURL = imageURL;
@@ -33,8 +30,8 @@ public class Product {
         this.id = id;
     }
 
-    public void setProductName(String productName) {
-        this.product_name = productName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setPrice(Long price) {
@@ -54,7 +51,7 @@ public class Product {
     }
 
     public String getProductName() {
-        return product_name;
+        return title;
     }
 
     public String getDescription() {
@@ -86,7 +83,7 @@ public class Product {
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", productName='" + product_name + '\'' +
+                ", title='" + title + '\'' +
                 ", price=" + price +
                 ", description='" + description + '\'' +
                 ", imageURL='" + imageURL + '\'' +
