@@ -13,10 +13,10 @@ public class ProductController {
 
 
 
-
-
     @Autowired
     private ProductRepository productRepo;
+    @Autowired
+    private CategoryController categoryController;
 
 
     @GetMapping(path="/add")

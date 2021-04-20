@@ -19,13 +19,26 @@ public class Category implements Serializable {
         this.categoryname = categoryname;
     }
 
-    public Category(Long id, String categoryname){
+    public Category(Long id, String categoryname) {
         this.id = id;
         this.categoryname = categoryname;
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getCategoryname() {
+        return categoryname;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setCategoryName(String categoryname) {
+        this.categoryname = categoryname;
     }
 
     public void setCategoryname(String categoryname) {
