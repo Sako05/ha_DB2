@@ -1,10 +1,12 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
 
 @Entity
-public class Product {
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -14,6 +16,12 @@ public class Product {
     private String description;
     private String imageURL;
     private Long quantity;
+
+
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="product_category", joinColumns={@JoinColumn(name="productID")},
+            inverseJoinColumns={@JoinColumn(name="categoryID")})
+            private List<Category> category;
 
     public Product(){}
 
@@ -25,6 +33,7 @@ public class Product {
         this.quantity = quantity;
 
     }
+
 
     public void setId(Long id) {
         this.id = id;
@@ -50,7 +59,7 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public String getProductName() {
+    public String getTitle() {
         return title;
     }
 
