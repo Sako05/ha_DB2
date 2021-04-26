@@ -19,7 +19,7 @@ public class Product implements Serializable {
 
 
 
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name="product_category", joinColumns={@JoinColumn(referencedColumnName="id")}
             , inverseJoinColumns={@JoinColumn(referencedColumnName="id")})
     private List<Category> product_category;
