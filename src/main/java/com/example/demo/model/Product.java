@@ -11,36 +11,40 @@ public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    private String title;
+    private String name;
     private Long price;
     private String description;
     private String imageURL;
     private Long quantity;
 
 
+
     @ManyToMany(cascade=CascadeType.ALL)
-    @JoinTable(name="product_category", joinColumns={@JoinColumn(name="productID")},
-            inverseJoinColumns={@JoinColumn(name="categoryID")})
-            private List<Category> category;
+    @JoinTable(name="product_category", joinColumns={@JoinColumn(referencedColumnName="id")}
+            , inverseJoinColumns={@JoinColumn(referencedColumnName="id")})
+    private List<Category> product_category;
 
     public Product(){}
 
-    public Product(String title, Long price, String description, String imageURL, Long quantity){
-        this.title = title;
+    public Product(String name, Long price, String description, String imageURL, Long quantity, List<Category> product_category){
+        this.name = name;
         this.price = price;
         this.description = description;
         this.imageURL = imageURL;
         this.quantity = quantity;
+        this.product_category = product_category;
 
     }
+
+
 
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String title) {
+        this.name = title;
     }
 
     public void setPrice(Long price) {
@@ -59,8 +63,8 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
     public String getDescription() {
@@ -87,12 +91,20 @@ public class Product implements Serializable {
     }
 
 
+    public List<Category> getCategory() {
+        return product_category;
+    }
+
+    public void setCategory(List<Category> product_category){
+        this.product_category = product_category;
+    }
+
 
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", title='" + title + '\'' +
+                ", name='" + name + '\'' +
                 ", price=" + price +
                 ", description='" + description + '\'' +
                 ", imageURL='" + imageURL + '\'' +
