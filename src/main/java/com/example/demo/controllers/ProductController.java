@@ -1,9 +1,13 @@
 package com.example.demo.controllers;
 
+import com.example.demo.model.Category;
 import com.example.demo.model.Product;
+import com.example.demo.repositories.CategoryRepository;
 import com.example.demo.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collections;
 
 
 @RestController
@@ -16,27 +20,41 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepo;
     @Autowired
-    private CategoryController categoryController;
+    private CategoryRepository categoryRepository;
 
 
     @GetMapping(path="/add")
-    public @ResponseBody String addProduct(@RequestParam String title, @RequestParam Long price, @RequestParam String description, @RequestParam String imageURL, @RequestParam Long quantity){
-        Product b = new Product(title,price,description,imageURL,quantity);
-        b.setTitle(title);
+    public String addProductByPost(@RequestParam String name, @RequestParam Long price, @RequestParam String description, @RequestParam String imageURL, @RequestParam Long quantity){
+        Product b = new Product();
+        b.setName(name);
         b.setPrice(price);
         b.setDescription(description);
         b.setImageURL(imageURL);
         b.setQuantity(quantity);
         productRepo.save(b);
-        return "Product was saved";
-    }
-
-    @PostMapping(path="/add")
-    public @ResponseBody String addProductByPost(@RequestParam String title, @RequestParam Long price, @RequestParam String description, @RequestParam String imageURL, @RequestParam Long quantity){
-        Product b = new Product(title, price,description,imageURL,quantity);
-        productRepo.save(b);
         return "Saved";
     }
+
+    @GetMapping(path="/addWCategory")
+    public String addProductWithCategory(@RequestParam String name, @RequestParam Long price, @RequestParam String description, @RequestParam String imageURL, @RequestParam Long quantity, @RequestParam Long categoryId){
+        Product n = new Product();
+        n.setName(name);
+        n.setPrice(price);
+        n.setDescription(description);
+        n.setImageURL(imageURL);
+        n.setQuantity(quantity);
+
+
+        Category p = categoryRepository.findById(categoryId).get();
+        if(p != null){
+            n.setCategory(Collections.singletonList(p));
+        }
+
+
+        productRepo.save(n);
+        return "Saved";
+    }
+
 
     @GetMapping(path="/all")
     public @ResponseBody Iterable<Product> getAllProducts(){
