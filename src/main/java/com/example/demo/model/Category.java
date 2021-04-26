@@ -10,18 +10,18 @@ public class Category implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    private String categoryname;
+    private String name;
 
 
     public Category(){}
 
     public Category(String categoryname) {
-        this.categoryname = categoryname;
+        this.name = categoryname;
     }
 
     public Category(Long id, String categoryname) {
         this.id = id;
-        this.categoryname = categoryname;
+        this.name = categoryname;
 
     }
 
@@ -29,19 +29,15 @@ public class Category implements Serializable {
         return id;
     }
 
-    public String getCategoryname() {
-        return categoryname;
+    public String getName() {
+        return name;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setCategoryName(String categoryname) {
-        this.categoryname = categoryname;
-    }
-
-    public void setCategoryname(String categoryname) {
-        this.categoryname = categoryname;
+    public void setName(String name) {
+        this.name = name;
     }
 }

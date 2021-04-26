@@ -20,9 +20,9 @@ public class CategoryController {
     @GetMapping(path = "/add")
     public String addNewCategory(@RequestParam String categoryname) {
         Category n = new Category();
-        n.setCategoryname(categoryname);
+        n.setName(categoryname);
         categoryRepository.save(n);
-        return categoryname + "is Saved";
+        return categoryname + " is Saved";
     }
 
     @GetMapping(path = "/all")
