@@ -5,15 +5,20 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
+@Table(name="products")
 public class Product implements Serializable {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long prod_id;
+
     private String name;
     private Long price;
     private String description;
@@ -22,29 +27,27 @@ public class Product implements Serializable {
 
 
 
-    @ManyToMany(cascade=CascadeType.ALL)
-    @JoinTable(name="product_category", joinColumns={@JoinColumn(referencedColumnName="id")}
-            , inverseJoinColumns={@JoinColumn(referencedColumnName="id")})
-    private List<Category> product_category;
+    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @JoinTable(name="product_category",
+            joinColumns={
+            @JoinColumn(name="prod_id")}
+            , inverseJoinColumns={
+            @JoinColumn(name="cat_id")})
+    private Set<Category> categories =  new HashSet<>();
 
     public Product(){}
 
-    public Product(String name, Long price, String description, String imageURL, Long quantity, List<Category> product_category){
+    public Product(String name, Long price, String description, String imageURL, Long quantity){
         this.name = name;
         this.price = price;
         this.description = description;
         this.imageURL = imageURL;
         this.quantity = quantity;
-        this.product_category = product_category;
 
     }
 
 
 
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public void setName(String title) {
         this.name = title;
@@ -66,6 +69,14 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
+    public Long getProd_id() {
+        return prod_id;
+    }
+
+    public void setProd_id(Long prod_id) {
+        this.prod_id = prod_id;
+    }
+
     public String getName() {
         return name;
     }
@@ -84,29 +95,23 @@ public class Product implements Serializable {
     }
 
 
-    public Long getId() {
-        return id;
-    }
-
-
     public Long getPrice() {
         return price;
     }
 
 
-    public List<Category> getCategory() {
-        return product_category;
+    public Set<Category> getCategories() {
+        return categories;
     }
 
-    public void setCategory(List<Category> product_category){
-        this.product_category = product_category;
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
-
 
     @Override
     public String toString() {
         return "Product{" +
-                "id=" + id +
+                "prod_id=" + prod_id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", description='" + description + '\'' +

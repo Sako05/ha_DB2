@@ -2,15 +2,24 @@ package com.example.demo.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 @Entity
+@Table(name = "categories")
 public class Category implements Serializable {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+
+    private Long cat_id;
     private String categoryname;
+
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "categories") //categories = TABLENAMÉ
+    private Set<Product> products = new HashSet<>();
+
 
 
     public Category(){}
@@ -19,23 +28,19 @@ public class Category implements Serializable {
         this.categoryname = categoryname;
     }
 
-    public Category(Long id, String categoryname) {
-        this.id = id;
-        this.categoryname = categoryname;
-
+    public Long getCat_id() {
+        return cat_id;
     }
 
-    public Long getId() {
-        return id;
+    public void setCat_id(Long cat_id) {
+        this.cat_id = cat_id;
     }
 
     public String getCategoryname() {
         return categoryname;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+
 
     public void setCategoryName(String categoryname) {
         this.categoryname = categoryname;
@@ -43,5 +48,13 @@ public class Category implements Serializable {
 
     public void setCategoryname(String categoryname) {
         this.categoryname = categoryname;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
     }
 }

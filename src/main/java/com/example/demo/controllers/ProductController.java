@@ -47,7 +47,7 @@ public class ProductController {
 
         Category p = categoryRepository.findById(categoryId).get();
         if(p != null){
-            n.setCategory(Collections.singletonList(p));
+            n.setCategories(Collections.singleton(p));
         }
 
 
