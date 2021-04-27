@@ -17,7 +17,7 @@ public class CategoryController {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @GetMapping(path = "/add")
+    @PostMapping(path = "/add")
     public String addNewCategory(@RequestParam String categoryname) {
         Category n = new Category();
         n.setName(categoryname);
@@ -26,8 +26,33 @@ public class CategoryController {
     }
 
     @GetMapping(path = "/all")
-    public Iterable<Category> gettAllCategories() {
+    public Iterable<Category> getAllCategories() {
         return categoryRepository.findAll();
+    }
+
+    @PatchMapping(path = "/{id}")
+    public String updateName(@PathVariable int id, @RequestParam String value) {
+        for (Category c : categoryRepository.findAll()) {
+            if (c.getId() == id) {
+                c.setName(value);
+                categoryRepository.save(c);
+                return "Category name changed.";
+            }
+        }
+
+        return "Could not find category by id: " + id + ".";
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public String deleteCategory(@PathVariable int id) {
+        for (Category c : categoryRepository.findAll()) {
+            if (c.getId() == id) {
+                categoryRepository.delete(c);
+                return "Category " + c.getName() + " deleted.";
+            }
+        }
+
+        return "Could not find category by id: " + id + ".";
     }
 
 }
