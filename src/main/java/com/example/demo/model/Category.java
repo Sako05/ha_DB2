@@ -8,7 +8,6 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "categories")
 public class Category implements Serializable {
 
     @Id
@@ -19,7 +18,6 @@ public class Category implements Serializable {
 
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "categories") //categories = TABLENAMÉ
     private Set<Product> products = new HashSet<>();
-
 
 
     public Category(){}

@@ -12,7 +12,6 @@ import java.util.Set;
 
 
 @Entity
-@Table(name="products")
 public class Product implements Serializable {
 
     @Id
@@ -24,8 +23,6 @@ public class Product implements Serializable {
     private String description;
     private String imageURL;
     private Long quantity;
-
-
 
     @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinTable(name="product_category",
