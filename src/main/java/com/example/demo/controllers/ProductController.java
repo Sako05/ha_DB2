@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
+
 import java.util.Optional;
+
 
 
 @RestController
@@ -22,7 +24,6 @@ public class ProductController {
     private ProductRepository productRepo;
     @Autowired
     private CategoryRepository categoryRepository;
-
 
     @PostMapping(path="/addWCategory")
     public String addProductWithCategory(@RequestParam String name, @RequestParam Long price, @RequestParam String description, @RequestParam String imageURL, @RequestParam Long quantity, @RequestParam Long categoryId){
@@ -40,6 +41,7 @@ public class ProductController {
                 return "Category not found";
             }
         }
+
 
         productRepo.save(n);
         return "Saved";

@@ -1,5 +1,8 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -18,7 +21,6 @@ public class Product implements Serializable {
     private String description;
     private String imageURL;
     private Long quantity;
-
 
 
     @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.PERSIST)
@@ -80,14 +82,10 @@ public class Product implements Serializable {
     }
 
 
-    public Long getId() {
-        return id;
-    }
-
-
     public Long getPrice() {
         return price;
     }
+
 
     @Override
     public String toString() {
