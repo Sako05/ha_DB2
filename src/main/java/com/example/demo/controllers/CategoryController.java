@@ -26,7 +26,7 @@ public class CategoryController {
     }
 
     @GetMapping(path = "/all")
-    public Iterable<Category> gettAllCategories() {
+    public Iterable<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
 

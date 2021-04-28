@@ -24,6 +24,8 @@ public class Product implements Serializable {
     private String imageURL;
     private Long quantity;
 
+
+
     @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinTable(name="product_category",
             joinColumns={

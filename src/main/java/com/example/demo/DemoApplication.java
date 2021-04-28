@@ -17,6 +17,9 @@ public class DemoApplication implements CommandLineRunner {
     @Autowired
     ProductRepository productRepositoryRepo;
 
+    @Autowired
+    CategoryRepository categoryRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
     }
@@ -31,7 +34,6 @@ public class DemoApplication implements CommandLineRunner {
         Category candy = new Category("Godis");
         Category pantry = new Category("Skafferi");
         Category other = new Category("Övrigt");
-
 
         //Dairy-products
         Product d1 = new Product("Mjölk", 10L, "Härlig och kall", "https:\\/\\/static.openfoodfacts.org\\/images\\/products\\/731\\/086\\/500\\/0361\\/front_sv.12.full.jpg", 97L);
@@ -153,7 +155,6 @@ public class DemoApplication implements CommandLineRunner {
 
         vegetable.getProducts().addAll(List.of(v1,v2,v3,v4,v5));
 
-
         //Candy-products
         Product c1 = new Product("Gott och blandat supersur", 19L, "Söta och sura gelegodisar", "https:\\/\\/assets.partyking.org\\/img\\/products\\/1300\\/gott-blandat-supersur-1.jpg", 3L);
         c1.getCategories().add(candy);
@@ -177,7 +178,7 @@ public class DemoApplication implements CommandLineRunner {
 
 
        productRepositoryRepo.saveAll(List.of(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,v1,v2,v3,v4,v5,c1,c2,p1,p2,p3));
-
+       categoryRepository.save(other);
     };
 
 }
