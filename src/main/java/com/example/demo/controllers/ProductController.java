@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 
 import java.util.Optional;
-
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -24,6 +24,7 @@ public class ProductController {
     private ProductRepository productRepo;
     @Autowired
     private CategoryRepository categoryRepository;
+    private Optional<Category> finalCat;
 
     @PostMapping(path="/addWCategory")
     public String addProductWithCategory(@RequestParam String name, @RequestParam Long price, @RequestParam String description, @RequestParam String imageURL, @RequestParam Long quantity, @RequestParam Long categoryId){
@@ -34,15 +35,17 @@ public class ProductController {
         n.setImageURL(imageURL);
         n.setQuantity(quantity);
 
-        for (Category c : categoryRepository.findAll()) {
-            if (c.getId().equals(categoryId)) {
-                n.setCategories(Collections.singleton(c));
-            } else {
-                return "Category not found";
+        finalCat = categoryRepository.findById(categoryId);
+
+        if (!finalCat.isEmpty()) {
+            for (Category c : finalCat.stream().collect(Collectors.toList())) {
+                if (c.getId().equals(categoryId)) {
+                    n.setCategories(Collections.singleton(c));
+                } else {
+                    return "Category not found";
+                }
             }
         }
-
-
         productRepo.save(n);
         return "Saved";
     }
