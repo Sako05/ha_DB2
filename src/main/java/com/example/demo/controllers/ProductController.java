@@ -24,7 +24,7 @@ public class ProductController {
     private CategoryRepository categoryRepository;
 
 
-    @GetMapping(path="/addWCategory")
+    @PostMapping(path="/addWCategory")
     public String addProductWithCategory(@RequestParam String name, @RequestParam Long price, @RequestParam String description, @RequestParam String imageURL, @RequestParam Long quantity, @RequestParam Long categoryId){
         Product n = new Product();
         n.setName(name);
@@ -35,7 +35,7 @@ public class ProductController {
 
         for (Category c : categoryRepository.findAll()) {
             if (c.getId().equals(categoryId)) {
-                n.setCategory(Collections.singletonList(c));
+                n.setCategories(Collections.singleton(c));
             } else {
                 return "Category not found";
             }
