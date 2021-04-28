@@ -16,7 +16,7 @@ public class Category implements Serializable {
     private Long id;
     private String name;
 
-    @ManyToMany(mappedBy = "categories", cascade = CascadeType.ALL, fetch = FetchType.LAZY) //categories = TABLENAMÉ
+    @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY) //categories = TABLENAMÉ
     @JsonBackReference
     private Set<Product> products = new HashSet<>();
 

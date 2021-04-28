@@ -21,12 +21,11 @@ public class Product implements Serializable {
 
 
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.PERSIST)
     @JoinTable(name="product_category",
-            joinColumns={
-                    @JoinColumn(name="prod_id")}
-            , inverseJoinColumns={
-            @JoinColumn(name="cat_id")})
+            joinColumns={ @JoinColumn(name="prod_id")},
+            inverseJoinColumns={ @JoinColumn(name="cat_id")})
+
     private Set<Category> categories = new HashSet<>();
 
     public Product(){}
