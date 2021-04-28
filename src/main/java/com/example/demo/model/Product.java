@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,9 +14,8 @@ import java.util.Set;
 public class Product implements Serializable {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long prod_id;
-
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
     private String name;
     private Long price;
     private String description;
@@ -25,14 +23,12 @@ public class Product implements Serializable {
     private Long quantity;
 
 
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.PERSIST)
     @JoinTable(name="product_category",
-            joinColumns={
-            @JoinColumn(name="prod_id")}
-            , inverseJoinColumns={
-            @JoinColumn(name="cat_id")})
-    private Set<Category> categories =  new HashSet<>();
+            joinColumns={ @JoinColumn(name="prod_id")},
+            inverseJoinColumns={ @JoinColumn(name="cat_id")})
+
+    private Set<Category> categories = new HashSet<>();
 
     public Product(){}
 
@@ -42,11 +38,11 @@ public class Product implements Serializable {
         this.description = description;
         this.imageURL = imageURL;
         this.quantity = quantity;
-
     }
 
-
-
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public void setName(String title) {
         this.name = title;
@@ -66,14 +62,6 @@ public class Product implements Serializable {
 
     public void setQuantity(Long quantity) {
         this.quantity = quantity;
-    }
-
-    public Long getProd_id() {
-        return prod_id;
-    }
-
-    public void setProd_id(Long prod_id) {
-        this.prod_id = prod_id;
     }
 
     public String getName() {
@@ -99,23 +87,23 @@ public class Product implements Serializable {
     }
 
 
-    public Set<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
-    }
-
     @Override
     public String toString() {
         return "Product{" +
-                "prod_id=" + prod_id +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", description='" + description + '\'' +
                 ", imageURL='" + imageURL + '\'' +
                 ", quantity=" + quantity +
                 '}';
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 }

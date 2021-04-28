@@ -1,9 +1,10 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
@@ -11,41 +12,50 @@ import java.util.Set;
 public class Category implements Serializable {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
 
-    private Long cat_id;
-    private String categoryname;
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
+    private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "categories")
+    @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY) //categories = TABLENAMÉ
+    @JsonBackReference
     private Set<Product> products = new HashSet<>();
 
 
     public Category(){}
 
-    public Category(String categoryname) {
-        this.categoryname = categoryname;
+    public Category(String name) {
+        this.name = name;
     }
 
-    public Long getCat_id() {
-        return cat_id;
+
+    public Category(Long id, String name) {
+        this.id = id;
+        this.name = name;
+
+
     }
 
     public void setCat_id(Long cat_id) {
         this.cat_id = cat_id;
     }
 
-    public String getCategoryname() {
-        return categoryname;
+    public String getName() {
+        return name;
     }
 
 
 
-    public void setCategoryName(String categoryname) {
-        this.categoryname = categoryname;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setCategoryname(String categoryname) {
-        this.categoryname = categoryname;
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
     }
 
     public Set<Product> getProducts() {
