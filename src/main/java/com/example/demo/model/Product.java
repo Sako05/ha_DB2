@@ -110,4 +110,5 @@ public class Product implements Serializable {
     public void setCategories(Set<Category> categories) {
         this.categories = categories;
     }
+
 }

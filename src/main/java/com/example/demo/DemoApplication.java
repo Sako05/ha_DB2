@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Optional;
 
 
+import java.util.List;
+
+
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
 
@@ -88,7 +91,6 @@ public class DemoApplication implements CommandLineRunner {
         Product d10 = new Product("Kvarg", 50L, "Till något", "https:\\\\/static.openfoodfacts.org\\/images\\/products\\/401\\/624\\/104\\/3047\\/front_sv.33.full.jpg", 75L);
         d10.setCategories(Collections.singleton(dairy));
         d10 = productRepositoryRepo.save(d10);
-
 
 
         //Meat-products
@@ -222,6 +224,3 @@ public class DemoApplication implements CommandLineRunner {
     }
 
 }
-
-
-
