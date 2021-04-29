@@ -1,8 +1,13 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -18,26 +23,22 @@ public class Product implements Serializable {
     private Long quantity;
 
 
+    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.PERSIST)
+    @JoinTable(name="product_category",
+            joinColumns={ @JoinColumn(name="prod_id")},
+            inverseJoinColumns={ @JoinColumn(name="cat_id")})
 
-    @ManyToMany(cascade=CascadeType.ALL)
-    @JoinTable(name="product_category", joinColumns={@JoinColumn(referencedColumnName="id")}
-            , inverseJoinColumns={@JoinColumn(referencedColumnName="id")})
-    private List<Category> product_category;
+    private Set<Category> categories = new HashSet<>();
 
     public Product(){}
 
-    public Product(String name, Long price, String description, String imageURL, Long quantity, List<Category> product_category){
+    public Product(String name, Long price, String description, String imageURL, Long quantity){
         this.name = name;
         this.price = price;
         this.description = description;
         this.imageURL = imageURL;
         this.quantity = quantity;
-        this.product_category = product_category;
-
     }
-
-
-
 
     public void setId(Long id) {
         this.id = id;
@@ -63,6 +64,10 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -81,22 +86,8 @@ public class Product implements Serializable {
     }
 
 
-    public Long getId() {
-        return id;
-    }
-
-
     public Long getPrice() {
         return price;
-    }
-
-
-    public List<Category> getCategory() {
-        return product_category;
-    }
-
-    public void setCategory(List<Category> product_category){
-        this.product_category = product_category;
     }
 
 
@@ -110,5 +101,13 @@ public class Product implements Serializable {
                 ", imageURL='" + imageURL + '\'' +
                 ", quantity=" + quantity +
                 '}';
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 }
