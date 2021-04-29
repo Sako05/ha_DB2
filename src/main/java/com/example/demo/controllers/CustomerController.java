@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 
 import com.example.demo.model.Customer;
+import com.example.demo.model.Product;
 import com.example.demo.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +19,8 @@ public class CustomerController {
     private CustomerRepository customerRepository;
 
 
-    @GetMapping(path = "/add")
-    public String addCustomer(@RequestParam String firstname, @RequestParam String lastname, @RequestParam String email, @RequestParam String password, @RequestParam String address, @RequestParam Long zipcode, @RequestParam String city){
+    @GetMapping(path = "/add/{firstname}/{lastname}/{email}/{password}/{address}/{zipcode}/{city}")
+    public String addCustomer(@PathVariable  String firstname, @PathVariable String lastname, @PathVariable String email, @PathVariable String password, @PathVariable String address, @PathVariable Long zipcode, @PathVariable String city){
         Customer b = new Customer();
         b.setFirstname(firstname);
         b.setLastname(lastname);
@@ -30,6 +31,36 @@ public class CustomerController {
         b.setCity(city);
         customerRepository.save(b);
         return "Customer saved";
+    }
+
+    @PatchMapping(path = "/update/{id}/{firstname}/{lastname}/{email}/{address}/{zipcode}/{city}")
+    public String updateCustomer(@PathVariable String id, @PathVariable  String firstname, @PathVariable String lastname, @PathVariable String email, @PathVariable String address, @PathVariable Long zipcode, @PathVariable String city) {
+        Customer customer = customerRepository.findById(Long.valueOf(id)).orElseThrow();
+
+        customer.setFirstname(firstname);
+        customer.setLastname(lastname);
+        customer.setEmail(email);
+        customer.setAddress(address);
+        customer.setZipcode(zipcode);
+        customer.setCity(city);
+
+        customerRepository.save(customer);
+
+        return "Customer updated";
+
+    }
+
+
+    @PatchMapping(path = "/update/{id}/{password}")
+    public String updateCustomerPassword(@PathVariable String id, @PathVariable String password) {
+        Customer customer = customerRepository.findById(Long.valueOf(id)).orElseThrow();
+
+        customer.setPassword(password);
+
+        customerRepository.save(customer);
+
+        return "Customer password updated";
+
     }
 
 
