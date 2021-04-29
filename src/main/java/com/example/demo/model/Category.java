@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -15,7 +14,7 @@ public class Category implements Serializable {
     private Long id;
     private String name;
 
-    @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY) //categories = TABLENAMÉ
+    @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
     @JsonBackReference
     private Set<Product> products = new HashSet<>();
 
@@ -49,5 +48,12 @@ public class Category implements Serializable {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    @PreRemove
+    private void removeGroupsFromUsers() {
+        for (Product p : products) {
+            p.getCategories().remove(this);
+        }
     }
 }

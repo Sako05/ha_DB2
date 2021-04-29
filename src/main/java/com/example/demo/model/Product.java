@@ -23,7 +23,7 @@ public class Product implements Serializable {
     private Long quantity;
 
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name="product_category",
             joinColumns={ @JoinColumn(name="prod_id")},
             inverseJoinColumns={ @JoinColumn(name="cat_id")})
