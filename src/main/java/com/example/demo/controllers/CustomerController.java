@@ -64,9 +64,14 @@ public class CustomerController {
     }
 
 
-    @GetMapping("/get/{id}")
-    public Optional<Customer> getByOrderId(@PathVariable Long id){
-        return customerRepository.findById(id);
+    @GetMapping("/{id}")
+    public Customer getCustomerByID(@PathVariable int id) {
+        for (Customer c : customerRepository.findAll()) {
+            if (c.getId() == id) {
+                return c;
+            }
+        }
+        return null;
     }
 
 
