@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.model.Category;
+import com.example.demo.model.Order_Row;
 import com.example.demo.model.Orders;
 import com.example.demo.model.Product;
 import com.example.demo.repositories.CategoryRepository;
@@ -137,6 +138,16 @@ public class ProductController {
     @GetMapping(path="/get/productWcategory/{categoryID}")
     public Iterable<Product> getOrderID(@PathVariable Long categoryID) {
         return productRepo.findProductByCategory(categoryID);
+    }
+
+    @GetMapping(path="/get/orderbyid/{ordersID}")
+    public Iterable<Product> getOrderByID(@PathVariable Long ordersID) {
+        return productRepo.findOrderByID(ordersID);
+    }
+
+    @GetMapping(path="/get/allcustomerorders/{customerID}")
+    public Iterable<Product> CustomerOrders(@PathVariable Long customerID) {
+        return productRepo.findAllCustomerOrders(customerID);
     }
 
     @PatchMapping(path = "/{id}/quantity")
