@@ -4,12 +4,8 @@ package com.example.demo.controllers;
 import com.example.demo.model.Category;
 import com.example.demo.model.Product;
 import com.example.demo.repositories.CategoryRepository;
-import com.example.demo.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping(path = "/category")
@@ -28,12 +24,22 @@ public class CategoryController {
         return name + " is Saved";
     }
 
+    @GetMapping(path = "/{id}")
+    public Category getCategoryByID(@PathVariable int id) {
+        for (Category c : categoryRepository.findAll()) {
+            if (c.getId() == id) {
+                return c;
+            }
+        }
+        return null;
+    }
+
     @GetMapping(path = "/all")
     public Iterable<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
 
-    @PatchMapping(path = "/{id}")
+    @PatchMapping(path = "/{id}/catname")
     public String updateName(@PathVariable int id, @RequestParam String value) {
         for (Category c : categoryRepository.findAll()) {
             if (c.getId() == id) {
