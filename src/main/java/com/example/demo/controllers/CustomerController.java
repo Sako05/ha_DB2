@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 
 import com.example.demo.model.Customer;
+import com.example.demo.model.Product;
 import com.example.demo.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class CustomerController {
     private CustomerRepository customerRepository;
 
 
-    @GetMapping(path = "/add")
+    @PostMapping(path = "/add")
     public String addCustomer(@RequestParam String firstname, @RequestParam String lastname, @RequestParam String email, @RequestParam String password, @RequestParam String address, @RequestParam Long zipcode, @RequestParam String city){
         Customer b = new Customer();
         b.setFirstname(firstname);
@@ -33,9 +34,14 @@ public class CustomerController {
     }
 
 
-    @GetMapping("/get/{id}")
-    public Optional<Customer> getByOrderId(@PathVariable Long id){
-        return customerRepository.findById(id);
+    @GetMapping("/{id}")
+    public Customer getCustomerByID(@PathVariable int id) {
+        for (Customer c : customerRepository.findAll()) {
+            if (c.getId() == id) {
+                return c;
+            }
+        }
+        return null;
     }
 
 

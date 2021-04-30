@@ -31,7 +31,7 @@ public class CategoryController {
         return categoryRepository.findAll();
     }
 
-    @PatchMapping(path = "/{id}")
+    @PatchMapping(path = "/{id}/catname")
     public String updateName(@PathVariable int id, @RequestParam String value) {
         for (Category c : categoryRepository.findAll()) {
             if (c.getId() == id) {

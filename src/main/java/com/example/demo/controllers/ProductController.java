@@ -27,7 +27,7 @@ public class ProductController {
     private Optional<Category> finalCat;
 
     @PostMapping(path="/addWCategory")
-    public String addProductWithCategory(@RequestParam String name, @RequestParam Long price, @RequestParam String description, @RequestParam String imageURL, @RequestParam Long quantity, @RequestParam Long categoryId){
+    public String addProductWithCategory(@RequestParam String name, @RequestParam Long price, @RequestParam String description, @RequestParam String imageURL, @RequestParam Long quantity, @RequestParam(defaultValue = "0") String categoryId){
         Product n = new Product();
         n.setName(name);
         n.setPrice(price);
@@ -35,17 +35,23 @@ public class ProductController {
         n.setImageURL(imageURL);
         n.setQuantity(quantity);
 
-        finalCat = categoryRepository.findById(categoryId);
+        if (!categoryId.equals("0")) {
+            Long catID = Long.valueOf(categoryId);
+            finalCat = categoryRepository.findById(catID);
 
-        if (!finalCat.isEmpty()) {
-            for (Category c : finalCat.stream().collect(Collectors.toList())) {
-                if (c.getId().equals(categoryId)) {
-                    n.setCategories(Collections.singleton(c));
-                } else {
-                    return "Category not found";
+            if (finalCat.isPresent()) {
+                for (Category c : finalCat.stream().collect(Collectors.toList())) {
+                    if (c.getId().equals(catID)) {
+                        n.setCategories(Collections.singleton(c));
+                    } else {
+                        return "Category not found";
+                    }
                 }
             }
+        } else {
+            n.setCategories(null);
         }
+
         productRepo.save(n);
         return "Saved";
     }
