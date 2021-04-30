@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.model.Category;
+import com.example.demo.model.Orders;
 import com.example.demo.model.Product;
 import com.example.demo.repositories.CategoryRepository;
 import com.example.demo.repositories.ProductRepository;
@@ -131,6 +132,11 @@ public class ProductController {
         }
 
         return "No product by id found";
+    }
+
+    @GetMapping(path="/get/productWcategory/{categoryID}")
+    public Iterable<Product> getOrderID(@PathVariable Long categoryID) {
+        return productRepo.findProductByCategory(categoryID);
     }
 
     @PatchMapping(path = "/{id}/quantity")

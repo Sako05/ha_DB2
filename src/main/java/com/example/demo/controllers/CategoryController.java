@@ -26,6 +26,16 @@ public class CategoryController {
         return name + " is Saved";
     }
 
+    @GetMapping(path = "/{id}")
+    public Category getCategoryByID(@PathVariable int id) {
+        for (Category c : categoryRepository.findAll()) {
+            if (c.getId() == id) {
+                return c;
+            }
+        }
+        return null;
+    }
+
     @GetMapping(path = "/all")
     public Iterable<Category> getAllCategories() {
         return categoryRepository.findAll();
