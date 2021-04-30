@@ -18,7 +18,7 @@ public class CustomerController {
     private CustomerRepository customerRepository;
 
 
-    @GetMapping(path = "/add")
+    @PostMapping(path = "/add")
     public String addCustomer(@RequestParam String firstname, @RequestParam String lastname, @RequestParam String email, @RequestParam String password, @RequestParam String address, @RequestParam Long zipcode, @RequestParam String city){
         Customer b = new Customer();
         b.setFirstname(firstname);
