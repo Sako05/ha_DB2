@@ -52,15 +52,15 @@ public class DemoApplication implements CommandLineRunner {
         other = categoryRepository.save(other);
 
         //Dairy-products
-        Product d1 = new Product("Mjölk", 10L, "Härlig och kall", "https:\\/\\/static.openfoodfacts.org\\/images\\/products\\/731\\/086\\/500\\/0361\\/front_sv.12.full.jpg", 97L);
+        Product d1 = new Product("Mjölk", 10L, "Härlig och kall", "https://static.openfoodfacts.org//images//products//731//086//500//0361//front_sv.12.full.jpg", 97L);
         d1.setCategories(Collections.singleton(dairy));
         d1 = productRepositoryRepo.save(d1);
 
-        Product d2 = new Product("Ost", 60L, "Med stora runda hål", "https:\\/\\/cdn.pixabay.com\\/photo\\/2017\\/09\\/01\\/14\\/51\\/cheese-2704448_1280.png", 46L);
+        Product d2 = new Product("Ost", 60L, "Med stora runda hål", "https://cdn.pixabay.com/photo/2017/09/01/14/51/cheese-2704448_1280.png", 46L);
         d2.setCategories(Collections.singleton(dairy));
         d2 = productRepositoryRepo.save(d2);
 
-        Product d3 = new Product("Filmjölk", 15L, "Som mjölk, men fastare", "https:\\/\\/static.openfoodfacts.org\\/images\\/products\\/731\\/086\\/508\\/8222\\/front_sv.10.full.jpg", 5L);
+        Product d3 = new Product("Filmjölk", 15L, "Som mjölk, men fastare", "https://static.openfoodfacts.org//images//products//731//086//508//8222//front_sv.10.full.jpg", 5L);
         d3.setCategories(Collections.singleton(dairy));
         d3 = productRepositoryRepo.save(d3);
 
