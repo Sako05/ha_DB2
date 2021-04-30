@@ -107,32 +107,32 @@ public class DemoApplication implements CommandLineRunner {
         m3 = productRepositoryRepo.save(m3);
 
         Product m4 = new Product("Fläskfile", 55L, "Ett stycke fläskfilé", "https://upload.wikimedia.org/wikipedia/commons/d/d6/Ica_Kvantum_Karlsson_Svedala_fl%C3%A4skfile_140522_0005_%2814061790878%29.jpg", 81L);
-        m3.setCategories(Collections.singleton(meat));
-        m3 = productRepositoryRepo.save(m3);
+        m4.setCategories(Collections.singleton(meat));
+        m4 = productRepositoryRepo.save(m4);
 
         Product m5 = new Product("Kyckling", 60L, "En hel kyckling", "https://p2.piqsels.com/preview/975/701/306/chicken-broiler-grilled-chicken-poultry.jpg", 26L);
-        m3.setCategories(Collections.singleton(meat));
-        m3 = productRepositoryRepo.save(m3);
+        m5.setCategories(Collections.singleton(meat));
+        m5 = productRepositoryRepo.save(m5);
 
         Product m6 = new Product("Lövbiff", 90L, "Flera stycken lövbiff", "https://upload.wikimedia.org/wikipedia/commons/0/0e/Rinderroulade-zutaten-02.JPG", 95L);
-        m3.setCategories(Collections.singleton(meat));
-        m3 = productRepositoryRepo.save(m3);
+        m6.setCategories(Collections.singleton(meat));
+        m6 = productRepositoryRepo.save(m6);
 
         Product m7 = new Product("Revbensspjäll", 60L, "Ett stycke revbensspjäll", "https://live.staticflickr.com/3010/5693609543_b768b36487_b.jpg", 76L);
-        m3.setCategories(Collections.singleton(meat));
-        m3 = productRepositoryRepo.save(m3);
+        m7.setCategories(Collections.singleton(meat));
+        m7 = productRepositoryRepo.save(m7);
 
         Product m8 = new Product("Kamben", 50L, "Den svenska termen för 'babyback ribs'", "https://cdn.pixabay.com/photo/2017/05/10/21/26/kamben-2302020_1280.jpg", 30L);
-        m3.setCategories(Collections.singleton(meat));
-        m3 = productRepositoryRepo.save(m3);
+        m8.setCategories(Collections.singleton(meat));
+        m8 = productRepositoryRepo.save(m8);
 
         Product m9 = new Product("Älghjärta", 60L, "Skogens konung? Inte länre!", "https://www.wallpaperuse.com/wallp/69-698886_m.jpg", 30L);
-        m3.setCategories(Collections.singleton(meat));
-        m3 = productRepositoryRepo.save(m3);
+        m9.setCategories(Collections.singleton(meat));
+        m9 = productRepositoryRepo.save(m9);
 
         Product m10 = new Product("Blandfärs", 50L, "800 g Blandfärs", "https://static.openfoodfacts.org/images/products/730/015/658/8791/front_sv.4.full.jpg", 35L);
-        m3.setCategories(Collections.singleton(meat));
-        m3 = productRepositoryRepo.save(m3);
+        m10.setCategories(Collections.singleton(meat));
+        m10 = productRepositoryRepo.save(m10);
 
 
         //Hygiene-products
@@ -184,19 +184,19 @@ public class DemoApplication implements CommandLineRunner {
 
         Product v2 = new Product("Svenska äpplen", 26L, "Äpple med söt frisk smak och vitt fruktkött", "https://www.wexthuset.com/images/products/wexthuset/apple-signe-tillisch.jpg", 96L);
         v2.setCategories(Collections.singleton(vegetable));
-        v2 = productRepositoryRepo.save(v1);
+        v2 = productRepositoryRepo.save(v2);
 
         Product v3 = new Product("Gurka", 20L, "Lokalt producerad svensk gurka", "https://pixnio.com/free-images/2020/01/20/2020-01-20-08-39-52-1200x800.jpg", 9L);
         v3.setCategories(Collections.singleton(vegetable));
-        v3 = productRepositoryRepo.save(v1);
+        v3 = productRepositoryRepo.save(v3);
 
         Product v4 = new Product("Tomat", 45L, "Spänstiga tomater med söt tomatsmak året om", "https://allergitest.se/wp-content/uploads/2021/02/Allergitest-Tomat.jpg.webp", 16L);
         v4.setCategories(Collections.singleton(vegetable));
-        v4 = productRepositoryRepo.save(v1);
+        v4 = productRepositoryRepo.save(v4);
 
         Product v5 = new Product("Svenska morötter", 14L, "Knapriga rötter med aningen söt smak som förstärks när de tillagas", "https://p2.piqsels.com/preview/4/203/788/carrot-turnip-vegetables-yellow-beets.jpg", 50L);
         v5.setCategories(Collections.singleton(vegetable));
-        v5 = productRepositoryRepo.save(v1);
+        v5 = productRepositoryRepo.save(v5);
 
         //Candy-products
         Product c1 = new Product("Gott och blandat supersur", 19L, "Söta och sura gelegodisar", "https://assets.partyking.org/img/products/1300/gott-blandat-supersur-1.jpg", 3L);
@@ -205,7 +205,7 @@ public class DemoApplication implements CommandLineRunner {
 
         Product c2 = new Product("Jolt Cola", 9L, "Den klassiska colan som ger dig den energi du behöver", "https://cdn.pixabay.com/photo/2016/02/11/23/06/bag-1194960_960_720.jpg", 89L);
         c2.setCategories(Collections.singleton(candy));
-        c2 = productRepositoryRepo.save(c1);
+        c2 = productRepositoryRepo.save(c2);
 
 
         //Pantry-products
