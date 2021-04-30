@@ -54,12 +54,12 @@ public class CategoryController {
         return "Could not find category by id: " + id + ".";
     }
 
-    @DeleteMapping(path = "/{name}")
-    public String deleteCategory(@PathVariable String name) {
-        categoryRepository.deleteByName(name);
-
+    @DeleteMapping(path = "/{id}")
+    public String deleteCategory(@PathVariable int id) {
+        if (remove(id)) {
             return "Success deleteting category";
-
+        }
+        return "Could not delete category";
     }
 
 
