@@ -20,8 +20,8 @@ public class CustomerController {
     private CustomerRepository customerRepository;
 
 
-    @GetMapping(path = "/add/{firstname}/{lastname}/{email}/{password}/{address}/{zipcode}/{city}")
-    public String addCustomer(@PathVariable  String firstname, @PathVariable String lastname, @PathVariable String email, @PathVariable String password, @PathVariable String address, @PathVariable Long zipcode, @PathVariable String city){
+    @GetMapping(path = "/add/{firstname}/{lastname}/{email}/{password}/{address}/{zipcode}/{city}/{userIs}")
+    public String addCustomer(@PathVariable  String firstname, @PathVariable String lastname, @PathVariable String email, @PathVariable String password, @PathVariable String address, @PathVariable Long zipcode, @PathVariable String city, @PathVariable String userIs){
         Customer b = new Customer();
         b.setFirstname(firstname);
         b.setLastname(lastname);
@@ -30,6 +30,7 @@ public class CustomerController {
         b.setAddress(address);
         b.setZipcode(zipcode);
         b.setCity(city);
+        b.setUserIs(userIs);
         customerRepository.save(b);
         return "Customer saved";
     }

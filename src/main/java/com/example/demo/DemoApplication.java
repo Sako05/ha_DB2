@@ -28,6 +28,9 @@ public class DemoApplication implements CommandLineRunner {
     @Autowired
     CategoryRepository categoryRepository;
 
+    @Autowired
+    CustomerRepository customerRepository;
+
     private Optional<Category> finalCat;
 
     public static void main(String[] args) {
@@ -52,6 +55,11 @@ public class DemoApplication implements CommandLineRunner {
         candy = categoryRepository.save(candy);
         pantry = categoryRepository.save(pantry);
         other = categoryRepository.save(other);
+
+
+        //Customer
+
+        Customer cu1 = new Customer("Hakim", "livs", "hakim@livs.se", "Ha123456", "hakimlivs2", 11111L, "Stockholm", "Admin");
 
         //Dairy-products
         Product d1 = new Product("Mjölk", 10L, "Härlig och kall", "https://static.openfoodfacts.org//images//products//731//086//500//0361//front_sv.12.full.jpg", 97L);

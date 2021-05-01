@@ -19,12 +19,12 @@ public class Customer implements Serializable {
     private String address;
     private Long zipcode;
     private String city;
+    private String userIs;
 
 
     public Customer(){}
 
-    public Customer(Long id, String firstname, String lastname, String email, String password, String address, Long zipcode, String city) {
-        this.id = id;
+    public Customer(String firstname, String lastname, String email, String password, String address, Long zipcode, String city, String userIs) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -32,6 +32,7 @@ public class Customer implements Serializable {
         this.address = address;
         this.zipcode = zipcode;
         this.city = city;
+        this.userIs = userIs;
     }
 
     public void setId(Long id) {
@@ -96,6 +97,14 @@ public class Customer implements Serializable {
 
     public String getCity() {
         return city;
+    }
+
+    public String getUserIs() {
+        return userIs;
+    }
+
+    public void setUserIs(String userIs) {
+        this.userIs = userIs;
     }
 }
 
