@@ -60,6 +60,7 @@ public class DemoApplication implements CommandLineRunner {
         //Customer
 
         Customer cu1 = new Customer("Hakim", "livs", "hakim@livs.se", "Ha123456", "hakimlivs2", 11111L, "Stockholm", "Admin");
+        customerRepository.save(cu1);
 
         //Dairy-products
         Product d1 = new Product("Mjölk", 10L, "Härlig och kall", "https://static.openfoodfacts.org//images//products//731//086//500//0361//front_sv.12.full.jpg", 97L);
