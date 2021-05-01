@@ -18,6 +18,7 @@ public class Orders implements Serializable {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     private String address;
+    private Long sum;
 
 
 
@@ -40,17 +41,21 @@ public class Orders implements Serializable {
 
     public Orders(){}
 
-    public Orders(Long id, String address, Customer customer) {
+    public Orders(Long id, String address, Customer customer, Long sum) {
         this.id = id;
         this.address = address;
         this.customer = customer;
+        this.sum = sum;
     }
 
-    public Orders(String address, Customer customer) {
+    public Orders(String address, Customer customer, Long sum) {
         this.address = address;
         this.customer = customer;
+        this.sum = sum;
 
     }
+
+
 
     public Long getId() {
         return id;
@@ -73,6 +78,13 @@ public class Orders implements Serializable {
         return customer;
     }
 
+    public Long getSum() {
+        return sum;
+    }
+
+    public void setSum(Long sum) {
+        this.sum = sum;
+    }
 
     public void setCustomer(Customer customer) {
         this.customer = customer;

@@ -1,9 +1,6 @@
 package com.example.demo.controllers;
 
-import com.example.demo.model.Category;
-import com.example.demo.model.Order_Row;
-import com.example.demo.model.Orders;
-import com.example.demo.model.Product;
+import com.example.demo.model.*;
 import com.example.demo.repositories.CategoryRepository;
 import com.example.demo.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -145,9 +142,9 @@ public class ProductController {
         return productRepo.findOrderByID(ordersID);
     }
 
-    @GetMapping(path="/get/allcustomerorders/{customerID}")
-    public Iterable<Product> CustomerOrders(@PathVariable Long customerID) {
-        return productRepo.findAllCustomerOrders(customerID);
+    @GetMapping(path="/get/allcustomerorders/{ordersID}")
+    public Iterable<Product> CustomerOrders(@PathVariable Long ordersID) {
+        return productRepo.findAllCustomerOrders(ordersID);
     }
 
     @PatchMapping(path = "/{id}/quantity")
@@ -162,5 +159,7 @@ public class ProductController {
 
         return "No product by id found";
     }
+
+
   
 }

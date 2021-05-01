@@ -20,6 +20,8 @@ import java.util.List;
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
 
+
+
     @Autowired
     ProductRepository productRepositoryRepo;
 
@@ -32,7 +34,7 @@ public class DemoApplication implements CommandLineRunner {
         SpringApplication.run(DemoApplication.class, args);
     }
 
-    @Override
+   @Override
     public void run(String... args) throws Exception {
 
         Category dairy = new Category("Mejeri");

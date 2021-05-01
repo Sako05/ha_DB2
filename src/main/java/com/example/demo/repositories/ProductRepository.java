@@ -28,13 +28,15 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
             true)
     Iterable<Product> findOrderByID(@Param("ordersID") Long ordersID);
 
-    @Query(value = "SELECT orders.id, product.id, product.name, product.price, product.description, product.imageurl, order_row.quantity FROM order_row\n" +
+    @Query(value = "SELECT product.id, orders.id, product.name, product.price, product.description, product.imageurl, order_row.quantity FROM order_row\n" +
             "INNER JOIN product ON order_row.product_ID = product.ID\n" +
             "INNER JOIN orders ON order_row.orders_id = orders.ID\n" +
             "INNER JOIN customer ON orders.customer_id = customer.id\n" +
-            "WHERE orders.customer_id =:customersID", nativeQuery =
+            "WHERE orders.id =:ordersID", nativeQuery =
             true)
-    Iterable<Product> findAllCustomerOrders(@Param("customersID") Long customersID);
+    Iterable<Product> findAllCustomerOrders(@Param("ordersID") Long customersID);
+
+
 
 
 

@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.model.Customer;
 import com.example.demo.model.Orders;
+import com.example.demo.model.Product;
 import com.example.demo.repositories.CustomerRepository;
 import com.example.demo.repositories.OrdersRepository;
 import com.example.demo.repositories.ProductRepository;
@@ -26,15 +27,15 @@ public class OrdersController {
     private OrdersRepository ordersRepository;
 
 
-    @GetMapping(path ="/add/{address}/{customerid}")
-    public String addOrder(@PathVariable String address, @PathVariable Long customerid){
+    @GetMapping(path ="/add/{address}/{customerid}/{sum}")
+    public String addOrder(@PathVariable String address, @PathVariable Long customerid, @PathVariable Long sum){
 
 
         Customer customer = customerRepository.findById(customerid)
                 .orElse(new Customer());
 
 
-        Orders c = new Orders(address, customer);
+        Orders c = new Orders(address, customer, sum);
         ordersRepository.save(c);
 
         return "Order was added";
@@ -57,7 +58,15 @@ public class OrdersController {
         return ordersRepository.findByCustomerIDorderID(customerID);
     }
 
+    @GetMapping(path="/get/customerOrders/{customerID}")
+    public Iterable<Orders> getCustomerOrders(@PathVariable Long customerID) {
+        return ordersRepository.findCustomersOrder(customerID);
+    }
 
+    @GetMapping(path="/get/orderssum/{ordersID}")
+    public Iterable<Orders> getOrdersSum(@PathVariable Long ordersID) {
+        return ordersRepository.findOrdersSum(ordersID);
+    }
 
     @GetMapping(path="/all")
     public @ResponseBody Iterable<Orders> getAllOrders() {
