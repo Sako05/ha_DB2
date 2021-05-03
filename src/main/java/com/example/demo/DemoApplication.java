@@ -171,7 +171,7 @@ public class DemoApplication{
         h6.setCategories(Collections.singleton(hygiene));
         h6 = productRepositoryRepo.save(h6);
 
-        Product h7 = new Product("Balsam", 40L, "Flaska med hårbalsam", "https://static.openproductsfacts.org/images/products/590/760/861/7478/front_de.4.full.jpg", 34L);
+        Product h7 = new Product("Balsam", 40L, "Flaska med hårbalsam", "https://static.openbeautyfacts.org/images/products/405/817/261/8970/front_de.4.full.jpg", 34L);
         h7.setCategories(Collections.singleton(hygiene));
         h7 = productRepositoryRepo.save(h7);
 
@@ -214,7 +214,7 @@ public class DemoApplication{
         c1.setCategories(Collections.singleton(candy));
         c1 = productRepositoryRepo.save(c1);
 
-        Product c2 = new Product("Jolt Cola", 9L, "Den klassiska colan som ger dig den energi du behöver", "https://cdn.pixabay.com/photo/2016/02/11/23/06/bag-1194960_960_720.jpg", 89L);
+        Product c2 = new Product("Jolt Cola", 9L, "Den klassiska colan som ger dig den energi du behöver", "https://live.staticflickr.com//2412//2128248625_8403a17be9_b.jpg", 89L);
         c2.setCategories(Collections.singleton(candy));
         c2 = productRepositoryRepo.save(c2);
 
