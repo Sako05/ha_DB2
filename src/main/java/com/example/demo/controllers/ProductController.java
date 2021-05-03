@@ -55,6 +55,28 @@ public class ProductController {
         return "Saved";
     }
 
+    @PatchMapping(path = "/update/{id}/{name}/{price}/{description}/{imageURL}/{quantity}/{categoryId}")
+    public String updateProductWithCategory(@PathVariable String id, @PathVariable String name, @PathVariable Long price, @PathVariable String description, @PathVariable String imageURL, @PathVariable Long quantity){
+        Product product = productRepo.findById(Long.valueOf(id)).orElseThrow();
+
+
+
+        if (product != null) {
+            product.setName(name);
+            product.setPrice(price);
+            product.setDescription(description);
+            product.setImageURL(imageURL);
+            product.setQuantity(quantity);
+
+            productRepo.save(product);
+            return "Product name updated";
+        }
+
+        return "No product by id found";
+    }
+
+
+
 
     @GetMapping(path="/all")
     public @ResponseBody Iterable<Product> getAllProducts(){
@@ -146,6 +168,9 @@ public class ProductController {
     public Iterable<Product> CustomerOrders(@PathVariable Long ordersID) {
         return productRepo.findAllCustomerOrders(ordersID);
     }
+
+
+
 
     @PatchMapping(path = "/{id}/quantity")
     public String updateQuantity(@PathVariable String id, @RequestParam int value) {
