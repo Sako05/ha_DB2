@@ -30,7 +30,7 @@ public class Orders implements Serializable {
 
 
     @JoinColumn
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Customer customer;
 
     @CreationTimestamp

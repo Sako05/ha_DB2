@@ -15,7 +15,7 @@ public class Order_Row implements Serializable {
     private Long quantity;
 
     @JoinColumn
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Orders orders;
 
     @JoinColumn

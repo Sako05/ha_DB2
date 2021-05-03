@@ -22,9 +22,9 @@ public class Customer implements Serializable {
     private String city;
     private String userIs;
 
-    @ManyToOne (cascade = CascadeType.ALL)
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "customer", orphanRemoval = true)
     @JsonBackReference
-    private Orders orders;
+    private Set<Orders> orders;
 
     public Customer(){}
 
@@ -111,11 +111,11 @@ public class Customer implements Serializable {
         this.userIs = userIs;
     }
 
-    public Orders getOrders() {
+    public Set<Orders> getOrders() {
         return orders;
     }
 
-    public void setOrders(Orders orders) {
+    public void setOrders(Set<Orders> orders) {
         this.orders = orders;
     }
 }
