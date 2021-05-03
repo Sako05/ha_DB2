@@ -2,8 +2,6 @@ package com.example.demo.controllers;
 
 
 import com.example.demo.model.Customer;
-import com.example.demo.model.Orders;
-import com.example.demo.model.Product;
 import com.example.demo.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +16,8 @@ public class CustomerController {
 
     @Autowired
     private CustomerRepository customerRepository;
+
+
 
 
     @GetMapping(path = "/add/{firstname}/{lastname}/{email}/{password}/{address}/{zipcode}/{city}/{userIs}")
@@ -50,6 +50,20 @@ public class CustomerController {
 
         return "Customer updated";
 
+    }
+
+
+    @DeleteMapping (path = "/{id}")
+    public String deleteCustomer(@PathVariable int id) {
+        for (Customer p : customerRepository.findAll()) {
+            if (p.getId() == id) {
+                customerRepository.delete(p);
+
+            }
+        }
+
+
+        return "Customer deleted";
     }
 
 
