@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.criterion.Order;
 
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Orders implements Serializable {
@@ -32,6 +34,10 @@ public class Orders implements Serializable {
     @JoinColumn
     @ManyToOne
     private Customer customer;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders", orphanRemoval = true)
+    @JsonBackReference
+    private Set<Order_Row> order_row;
 
     @CreationTimestamp
     @Column(name = "dataoforder")
@@ -88,5 +94,13 @@ public class Orders implements Serializable {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Set<Order_Row> getOrder_row() {
+        return order_row;
+    }
+
+    public void setOrder_row(Set<Order_Row> order_row) {
+        this.order_row = order_row;
     }
 }
