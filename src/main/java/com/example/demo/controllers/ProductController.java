@@ -55,13 +55,11 @@ public class ProductController {
         return "Saved";
     }
 
-    @PatchMapping(path = "/update/{id}/{name}/{price}/{description}/{imageURL}/{quantity}/{categoryId}")
+    @PatchMapping(path = "/update/{id}/{name}/{price}/{description}/{imageURL}/{quantity}")
     public String updateProductWithCategory(@PathVariable String id, @PathVariable String name, @PathVariable Long price, @PathVariable String description, @PathVariable String imageURL, @PathVariable Long quantity){
         Product product = productRepo.findById(Long.valueOf(id)).orElseThrow();
 
 
-
-        if (product != null) {
             product.setName(name);
             product.setPrice(price);
             product.setDescription(description);
@@ -70,9 +68,7 @@ public class ProductController {
 
             productRepo.save(product);
             return "Product name updated";
-        }
 
-        return "No product by id found";
     }
 
 
