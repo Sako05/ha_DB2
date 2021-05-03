@@ -66,11 +66,17 @@ public class CategoryController {
     public boolean remove(int id) {
         for (Category c : categoryRepository.findAll()) {
             if (c.getId() == id) {
-                for (Product p : c.getProducts()) {
-                    p.getCategories().remove(c);
+
+                if (c.getProducts().size() != 0) {
+                    for (Product p : c.getProducts()) {
+                        p.getCategories().remove(c);
+                        categoryRepository.delete(c);
+                    }
+                } else {
                     categoryRepository.delete(c);
-                    return true;
                 }
+
+                return true;
             }
         }
         return false;
