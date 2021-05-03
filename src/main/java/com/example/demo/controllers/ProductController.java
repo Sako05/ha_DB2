@@ -55,7 +55,7 @@ public class ProductController {
         return "Saved";
     }
 
-    @PatchMapping(path = "/update/{id}/{name}/{price}/{description}/{imageURL}/{quantity}")
+    @PostMapping(path = "/update/{id}/{name}/{price}/{description}/{imageURL}/{quantity}")
     public String updateProductWithCategory(@PathVariable String id, @PathVariable String name, @PathVariable Long price, @PathVariable String description, @PathVariable String imageURL, @PathVariable Long quantity){
         Product product = productRepo.findById(Long.valueOf(id)).orElseThrow();
 
