@@ -1,10 +1,11 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Customer implements Serializable {
@@ -21,6 +22,9 @@ public class Customer implements Serializable {
     private String city;
     private String userIs;
 
+    @ManyToOne (cascade = CascadeType.ALL)
+    @JsonBackReference
+    private Orders orders;
 
     public Customer(){}
 
@@ -105,6 +109,14 @@ public class Customer implements Serializable {
 
     public void setUserIs(String userIs) {
         this.userIs = userIs;
+    }
+
+    public Orders getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Orders orders) {
+        this.orders = orders;
     }
 }
 
