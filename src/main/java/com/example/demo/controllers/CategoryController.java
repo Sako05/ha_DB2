@@ -62,6 +62,11 @@ public class CategoryController {
         return "Could not delete category";
     }
 
+    @GetMapping(path="/get/categorybyproductid/{productid}")
+    public Iterable<Category> CategoryForProduct(@PathVariable Long productid) {
+        return categoryRepository.findCategoryByProductID(productid);
+    }
+
 
     public boolean remove(int id) {
         for (Category c : categoryRepository.findAll()) {
