@@ -47,6 +47,11 @@ public class Order_RowController {
 
     }
 
+    @GetMapping(path="/get/OrderID/{ordersID}")
+    public Iterable<Order_Row> getOrderWithProduct(@PathVariable Long ordersID) {
+        return order_rowRepository.findOrdersWithProducts(ordersID);
+    }
+
 
     @GetMapping(path="/all")
     public @ResponseBody Iterable<Order_Row> getAllOrderRow() {

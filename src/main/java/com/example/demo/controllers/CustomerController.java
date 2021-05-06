@@ -84,7 +84,7 @@ public class CustomerController {
 
 
     @GetMapping("/get/{id}")
-    public Optional<Customer> getByOrderId(@PathVariable Long id){
+    public Optional<Customer> getCustomerById(@PathVariable Long id){
         return customerRepository.findById(id);
     }
 

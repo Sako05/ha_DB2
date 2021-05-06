@@ -36,6 +36,7 @@ public class CategoryController {
         return null;
     }
 
+
     @GetMapping(path = "/all")
     public Iterable<Category> getAllCategories() {
         return categoryRepository.findAll();
