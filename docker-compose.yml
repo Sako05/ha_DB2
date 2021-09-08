@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  mysql:
+    image: mysql:8.0.26
+    environment:
+      - MYSQL_DATABASE=ha_db
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - "3307:3307"
+  ha_db2:
+    image: ha_db2
+    environment:
+      - MYSQL_HOST=mysql
+      - SPRING_RABBITMQ_HOST=rabbit
+      - SPRING_RABBITMQ_PORT=5672
+    ports:
+      - "8081:8081"
+    depends_on:
+      - rabbit
+  rabbit:
+    image: rabbitmq:3.9.5
+    ports:
+      - "5672:5672"
+      - "15672:15672"
