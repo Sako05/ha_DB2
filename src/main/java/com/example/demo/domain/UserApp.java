@@ -18,4 +18,7 @@ public class UserApp {
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<RoleApp> roleApps = new ArrayList<>();
+
+
+
 }
