@@ -1,5 +1,9 @@
 package com.example.demo;
 
+import com.example.demo.controllers.UserController;
+import com.example.demo.domain.RoleApp;
+import com.example.demo.domain.UserApp;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -7,11 +11,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import com.example.demo.model.*;
 import com.example.demo.repositories.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 
 import java.util.List;
@@ -36,6 +40,29 @@ public class DemoApplication{
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
     }
+
+
+    @Bean
+    PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+
+    @Bean
+    CommandLineRunner run(UserService userService) {
+        return args -> {
+          userService.saveRole(new RoleApp(null, "ROLE_USER"));
+          userService.saveRole(new RoleApp(null, "ROLE_ADMIN"));
+
+          userService.saveUser(new UserApp(null, "Salem K", "salem", "1234", new ArrayList<>()));
+          userService.saveUser(new UserApp(null, "Admin", "admin", "1234", new ArrayList<>()));
+
+          userService.addRoleToUser("admin", "ROLE_ADMIN");
+          userService.addRoleToUser("admin", "ROLE_USER");
+          userService.addRoleToUser("salem", "ROLE_USER");
+        };
+    }
+
 /*
   @Override
     public void run(String... args) throws Exception {
