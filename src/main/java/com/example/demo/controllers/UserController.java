@@ -1,14 +1,17 @@
 package com.example.demo.controllers;
 
-import com.example.demo.domain.RoleApp;
-import com.example.demo.domain.UserApp;
+import com.example.demo.model.RoleApp;
+import com.example.demo.model.UserApp;
 import com.example.demo.service.UserService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
 import java.util.List;
 
@@ -39,6 +42,12 @@ public class UserController {
     public ResponseEntity<?>addRoleToUser(@RequestBody RoleToUserForm form){
         userService.addRoleToUser(form.getUsername(), form.getRoleName());
         return ResponseEntity.ok().build();
+    }
+
+
+    @GetMapping("/role/addtouser")
+    public void refreshToken(HttpServletRequest request, HttpServletResponse response){
+        String authorizationHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
     }
 
 

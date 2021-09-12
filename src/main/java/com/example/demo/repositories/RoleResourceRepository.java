@@ -1,6 +1,6 @@
 package com.example.demo.repositories;
 
-import com.example.demo.domain.RoleApp;
+import com.example.demo.model.RoleApp;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

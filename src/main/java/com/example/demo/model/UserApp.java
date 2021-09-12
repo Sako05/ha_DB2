@@ -1,6 +1,5 @@
-package com.example.demo.domain;
+package com.example.demo.model;
 
-import com.example.demo.security.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

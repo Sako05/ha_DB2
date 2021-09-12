@@ -1,8 +1,7 @@
 package com.example.demo;
 
-import com.example.demo.controllers.UserController;
-import com.example.demo.domain.RoleApp;
-import com.example.demo.domain.UserApp;
+import com.example.demo.model.RoleApp;
+import com.example.demo.model.UserApp;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,12 +12,8 @@ import com.example.demo.model.*;
 import com.example.demo.repositories.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
-
-
-import java.util.List;
 
 
 @SpringBootApplication

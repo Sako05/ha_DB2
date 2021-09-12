@@ -1,8 +1,8 @@
 package com.example.demo.service;
 
 
-import com.example.demo.domain.RoleApp;
-import com.example.demo.domain.UserApp;
+import com.example.demo.model.RoleApp;
+import com.example.demo.model.UserApp;
 import com.example.demo.repositories.RoleResourceRepository;
 import com.example.demo.repositories.UserResourceRepo;
 import lombok.RequiredArgsConstructor;
