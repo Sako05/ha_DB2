@@ -1,6 +1,8 @@
-package com.example.demo.model;
+package com.example.demo.presentation;
+
 
 public class PaymentDto {
+
     private String reference;
     private long amount;
 
@@ -17,3 +19,5 @@ public class PaymentDto {
         return reference;
     }
 }
+
+//Osäkert om denna klass behövs framöver

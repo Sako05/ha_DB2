@@ -3,10 +3,10 @@ services:
   mysql:
     image: mysql:8.0.26
     environment:
-      - MYSQL_DATABASE=ha_db
+      - MYSQL_DATABASE=hakimlivs_db
       - MYSQL_ROOT_PASSWORD=password
     ports:
-      - "3307:3307"
+      - "3307:3306"
   ha_db2:
     image: ha_db2
     environment:
@@ -14,7 +14,7 @@ services:
       - SPRING_RABBITMQ_HOST=rabbit
       - SPRING_RABBITMQ_PORT=5672
     ports:
-      - "8081:8081"
+      - "8081:8080"
     depends_on:
       - rabbit
   rabbit:
