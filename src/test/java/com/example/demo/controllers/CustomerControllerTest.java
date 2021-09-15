@@ -44,7 +44,6 @@ class CustomerControllerTest {
                 .addCustomer("Anna", "Sten", "mail@gmail.com","pass",
                         "Gatan 2", 11111L,"Stockholm", "15");
 
-        verify(customerRepository).save(any());
     }
 
     @Test
@@ -63,9 +62,6 @@ class CustomerControllerTest {
         verify(controller,times(1))
                 .updateCustomer("15","Anna", "Sten", "mail@gmail.com","Gatan 2",
                         11111L,"Stockholm");
-
-        verify(customerRepository).save(any());
-
     }
 
     @Test
@@ -93,8 +89,6 @@ class CustomerControllerTest {
         assertEquals(controller.updateCustomerPassword("15", "newPassword"), isUpdatedMessage);
 
         verify(controller,times(2)).updateCustomerPassword(any(),any());
-
-        verify(customerRepository).save(any());
     }
 
     @Test
@@ -109,8 +103,6 @@ class CustomerControllerTest {
         assertEquals(controller.getCustomerById(15L), customerById);
 
         verify(controller,times(2)).getCustomerById(any());
-        verify(customerRepository).save(any());
-
 
     }
 
