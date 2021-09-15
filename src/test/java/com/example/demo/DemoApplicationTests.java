@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
-@AutoConfigureMockMvc
 @SpringBootTest
 class DemoApplicationTests {
 
@@ -15,11 +14,5 @@ class DemoApplicationTests {
     void contextLoads()
     {}
 
-    @AfterEach
-    public void after() {
-        wireMockServer.stop();
-    }
-
-
-
+ 
 }
