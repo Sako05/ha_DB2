@@ -2,7 +2,9 @@ package com.example.demo.controllers;
 
 
 import com.example.demo.model.Customer;
+import com.example.demo.model.UserApp;
 import com.example.demo.repositories.CustomerRepository;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,14 +25,16 @@ public class CustomerController {
     @GetMapping(path = "/add/{firstname}/{lastname}/{email}/{password}/{address}/{zipcode}/{city}/{userIs}")
     public String addCustomer(@PathVariable  String firstname, @PathVariable String lastname, @PathVariable String email, @PathVariable String password, @PathVariable String address, @PathVariable Long zipcode, @PathVariable String city, @PathVariable String userIs){
         Customer b = new Customer();
-        b.setFirstname(firstname);
-        b.setLastname(lastname);
-        b.setEmail(email);
-        b.setPassword(password);
-        b.setAddress(address);
-        b.setZipcode(zipcode);
-        b.setCity(city);
+        UserApp userApp = new UserApp();
+        userApp.setFirstname(firstname);
+        userApp.setLastname(lastname);
+        userApp.setUsername(email);
+        userApp.setPassword(password);
+        userApp.setAddress(address);
+        userApp.setZipcode(zipcode);
+        userApp.setCity(city);
         b.setUserIs(userIs);
+
         customerRepository.save(b);
         return "Customer saved";
     }

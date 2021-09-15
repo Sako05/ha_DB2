@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.model.RoleApp;
 import com.example.demo.model.UserApp;
+import com.example.demo.response.JwtResponse;
 import com.example.demo.service.UserService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ import java.util.List;
 @RequestMapping("/api")
 @RequiredArgsConstructor
 public class UserController {
+
     private final UserService userService;
 
     @GetMapping("/users")
@@ -42,12 +44,6 @@ public class UserController {
     public ResponseEntity<?>addRoleToUser(@RequestBody RoleToUserForm form){
         userService.addRoleToUser(form.getUsername(), form.getRoleName());
         return ResponseEntity.ok().build();
-    }
-
-
-    @GetMapping("/role/addtouser")
-    public void refreshToken(HttpServletRequest request, HttpServletResponse response){
-        String authorizationHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
     }
 
 

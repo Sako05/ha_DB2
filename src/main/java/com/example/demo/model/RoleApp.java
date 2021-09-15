@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 
-import com.example.demo.security.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +14,7 @@ import javax.persistence.Id;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RoleApp extends Role {
+public class RoleApp {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

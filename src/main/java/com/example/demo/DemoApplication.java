@@ -49,8 +49,8 @@ public class DemoApplication{
           userService.saveRole(new RoleApp(null, "ROLE_USER"));
           userService.saveRole(new RoleApp(null, "ROLE_ADMIN"));
 
-          userService.saveUser(new UserApp(null, "Salem K", "salem", "1234", new ArrayList<>()));
-          userService.saveUser(new UserApp(null, "Admin", "admin", "1234", new ArrayList<>()));
+          userService.saveUser(new UserApp(null, "Salem", "K", "salem", "1234" ,"Väst 8", 12345L, "Huddinge", new ArrayList<>()));
+          userService.saveUser(new UserApp(null, "Admin", "Admin", "admin", "1234", "admin", 12345L, "admin", new ArrayList<>()));
 
           userService.addRoleToUser("admin", "ROLE_ADMIN");
           userService.addRoleToUser("admin", "ROLE_USER");
