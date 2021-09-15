@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.context.annotation.Bean;
 import com.example.demo.model.*;
 import com.example.demo.repositories.*;
+import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
@@ -21,7 +23,6 @@ import java.util.List;
 //public class DemoApplication implements CommandLineRunner {
 
 public class DemoApplication{
-
     @Autowired
     ProductRepository productRepositoryRepo;
 

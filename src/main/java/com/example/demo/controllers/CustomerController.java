@@ -19,7 +19,6 @@ public class CustomerController {
 
 
 
-
     @GetMapping(path = "/add/{firstname}/{lastname}/{email}/{password}/{address}/{zipcode}/{city}/{userIs}")
     public String addCustomer(@PathVariable  String firstname, @PathVariable String lastname, @PathVariable String email, @PathVariable String password, @PathVariable String address, @PathVariable Long zipcode, @PathVariable String city, @PathVariable String userIs){
         Customer b = new Customer();
@@ -37,7 +36,8 @@ public class CustomerController {
 
     @PatchMapping(path = "/update/{id}/{firstname}/{lastname}/{email}/{address}/{zipcode}/{city}")
     public String updateCustomer(@PathVariable String id, @PathVariable  String firstname, @PathVariable String lastname, @PathVariable String email, @PathVariable String address, @PathVariable Long zipcode, @PathVariable String city) {
-        Customer customer = customerRepository.findById(Long.valueOf(id)).orElseThrow();
+        Customer customer = customerRepository.findById(Long.valueOf(id)).
+                        orElseThrow(()-> new RuntimeException("Could not find this account"));
 
         customer.setFirstname(firstname);
         customer.setLastname(lastname);

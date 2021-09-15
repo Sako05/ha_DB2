@@ -17,8 +17,6 @@ import java.util.stream.Collectors;
 @CrossOrigin
 public class ProductController {
 
-
-
     @Autowired
     private ProductRepository productRepo;
     @Autowired
