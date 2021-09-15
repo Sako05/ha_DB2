@@ -17,7 +17,7 @@ public class Payment {
         //For hibernate
     }
 
-    public Payment(Long id, String reference, String status) {
+    public Payment(long id, String reference, String status) {
         this.id = id;
         this.reference = reference;
         this.status = status;
@@ -26,6 +26,10 @@ public class Payment {
     public Payment(String reference, String status) {
         this.reference = reference;
         this.status = status;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getReference() {
