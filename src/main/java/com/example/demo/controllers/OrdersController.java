@@ -37,7 +37,7 @@ public class OrdersController {
 
         Orders c = new Orders(address, customer, sum);
         ordersRepository.save(c);
-//TODO: Skicka order id + summa till payment-gw
+
         return "Order was added";
     }
 

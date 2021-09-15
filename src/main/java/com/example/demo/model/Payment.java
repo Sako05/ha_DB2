@@ -10,7 +10,7 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String reference;
+    private String reference; //OrderID
     private String status;
 
     public Payment() {

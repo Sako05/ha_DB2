@@ -15,18 +15,23 @@ public class PaymentService{
     private PaymentRepository paymentRepository;
 
     public void processPayment(String payment) throws JsonProcessingException {
-        
+
         ObjectMapper mapper = new ObjectMapper();
         JsonNode jsonNode = mapper.readTree(payment);
         String reference = jsonNode.get("reference").asText();
-        //String status = jsonNode.get("status").asText();
+        String status = jsonNode.get("status").asText();
 
-        //if(status.equalsIgnoreCase("CREATED")) {
-            Payment newPayment = new Payment(reference, "PAID");
+        if(status.equalsIgnoreCase("CREATED")) {
+            Payment newPayment = new Payment(reference, status);
             paymentRepository.save(newPayment);
-       // }
-       // if(status.equalsIgnoreCase("PAID")) {
-            //TODO: Ändra status från befintlig payment till PAID i databasen
-       // }
+        }
+        if(status.equalsIgnoreCase("PAID")) {
+            Payment existingPayment = paymentRepository.findByReference(reference);
+            existingPayment.setStatus(status);
+            paymentRepository.save(existingPayment);
+        }
+        else{
+            System.out.println("Error: invalid payment status");
+        }
     }
 }
