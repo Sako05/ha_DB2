@@ -28,7 +28,7 @@ public class PaymentController {
     @Autowired
     private PaymentRepository paymentRepository;
 
-    @GetMapping(path ="/add/{reference}/{status}")
+    @PostMapping(path ="/add/{reference}/{status}")
     public String addOrUpdatePayment(@PathVariable String reference, @PathVariable String status){
 
             Payment payment = paymentRepository.findByReference(reference)
