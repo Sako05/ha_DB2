@@ -20,9 +20,9 @@ import java.util.List;
 
 
 @SpringBootApplication
-public class DemoApplication implements CommandLineRunner {
+//public class DemoApplication implements CommandLineRunner {
 
-
+public class DemoApplication{
     @Autowired
     ProductRepository productRepositoryRepo;
 
@@ -37,8 +37,8 @@ public class DemoApplication implements CommandLineRunner {
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
     }
-
-    @Override
+/*
+  @Override
     public void run(String... args) throws Exception {
 
         Category dairy = new Category("Mejeri");
@@ -219,11 +219,11 @@ public class DemoApplication implements CommandLineRunner {
         c2.setCategories(Collections.singleton(candy));
         c2 = productRepositoryRepo.save(c2);
 
-        Product c3 = new Product("Ahlgrens bilar 160g", 15L, "Ahlgrens bilar Original är en favorit bland godispåsar. De mjuka bilarna erbjuds här i de klassiska Ahlgrens bilar-färgerna rosa, vit och grön", "https:\\/\\/static.openfoodfacts.org\\/images\\/products\\/731\\/078\\/000\\/5212\\/front_sv.16.200.jpg", 33L);
+        Product c3 = new Product("Ahlgrens bilar 160g",15L,"Ahlgrens bilar Original är en favorit bland godispåsar. De mjuka bilarna erbjuds här i de klassiska Ahlgrens bilar-färgerna rosa, vit och grön","https:\\/\\/static.openfoodfacts.org\\/images\\/products\\/731\\/078\\/000\\/5212\\/front_sv.16.200.jpg",33L);
         c3.setCategories(Collections.singleton(candy));
         c3 = productRepositoryRepo.save(c3);
 
-        Product c4 = new Product("Polly Milkchoco 200g", 26L, "Polly är härligt sega skumtoppar dragerade med en ljuvlig chokladsmak", "https:\\/\\/static.openfoodfacts.org\\/images\\/products\\/731\\/004\\/003\\/4532\\/front_sv.4.200.jpg", 81L);
+        Product c4 = new Product("Polly Milkchoco 200g",26L,"Polly är härligt sega skumtoppar dragerade med en ljuvlig chokladsmak","https:\\/\\/static.openfoodfacts.org\\/images\\/products\\/731\\/004\\/003\\/4532\\/front_sv.4.200.jpg",81L);
         c4.setCategories(Collections.singleton(candy));
         c4 = productRepositoryRepo.save(c4);
 
@@ -241,16 +241,14 @@ public class DemoApplication implements CommandLineRunner {
         p3.setCategories(Collections.singleton(pantry));
         p3 = productRepositoryRepo.save(p3);
 
-        Product p4 = new Product("Felix Potatismos", 20L, "I Eslöv mitt i Skåne tillagas Felix klassiskt potatismos. Till 6 portioner används cirka 15 potatisar", "https:\\/\\/static.openfoodfacts.org\\/images\\/products\\/731\\/024\\/006\\/6128\\/front_sv.18.full.jpg", 2L);
+        Product p4 = new Product("Felix Potatismos",20L,"I Eslöv mitt i Skåne tillagas Felix klassiskt potatismos. Till 6 portioner används cirka 15 potatisar","https:\\/\\/static.openfoodfacts.org\\/images\\/products\\/731\\/024\\/006\\/6128\\/front_sv.18.full.jpg",2L);
         p4.setCategories(Collections.singleton(pantry));
         p4 = productRepositoryRepo.save(p4);
 
 
+
+    } */
+
     }
-}
-
-
-
-
 
 
