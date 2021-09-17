@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 public class PaymentService{
-
+/*
     @Autowired
     private PaymentRepository paymentRepository;
 
@@ -34,4 +34,6 @@ public class PaymentService{
             System.out.println("Error: invalid payment status");
         }
     }
+
+ */
 }

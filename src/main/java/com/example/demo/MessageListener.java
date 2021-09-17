@@ -9,11 +9,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MessageListener {
-
+/*
     @RabbitListener(queues = MQConfiguration.PAYMENT_QUEUE)
     public void listener(String payment) throws JsonProcessingException {
         PaymentService ps = new PaymentService();
         ps.processPayment(payment);
 
     }
+
+ */
 }
