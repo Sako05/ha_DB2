@@ -37,8 +37,8 @@ public class DemoApplication{
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
     }
-/*
-  @Override
+
+
     public void run(String... args) throws Exception {
 
         Category dairy = new Category("Mejeri");
@@ -247,7 +247,7 @@ public class DemoApplication{
 
 
 
-    } */
+    }
 
     }
 
