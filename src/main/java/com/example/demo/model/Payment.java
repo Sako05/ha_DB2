@@ -17,9 +17,19 @@ public class Payment {
         //For hibernate
     }
 
+    public Payment(long id, String reference, String status) {
+        this.id = id;
+        this.reference = reference;
+        this.status = status;
+    }
+
     public Payment(String reference, String status) {
         this.reference = reference;
         this.status = status;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getReference() {
