@@ -37,6 +37,11 @@ public class PaymentController {
         return "Payment was added";
     }
 
+    @GetMapping(path ="/get/status/{reference}")
+    public String getPaymentStatus(@PathVariable String reference){
+        return paymentRepository.findByReference(reference).get().getStatus();
+    }
+
 
 
 
