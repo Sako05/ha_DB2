@@ -38,8 +38,8 @@ public class PaymentController {
     }
 
     @GetMapping(path ="/get/status/{reference}")
-    public String getPaymentStatus(@PathVariable String reference){
-        return paymentRepository.findByReference(reference).get().getStatus();
+    public Optional<Payment> getPaymentStatus(@PathVariable String reference){
+        return paymentRepository.findByReference(reference);
     }
 
 
