@@ -1,15 +1,12 @@
 package com.example.demo.controllers;
 
-import com.example.demo.model.Payment;
+import com.example.demo.model.*;
 import com.example.demo.repositories.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
-import com.example.demo.model.Customer;
-import com.example.demo.model.Orders;
 import com.example.demo.model.Payment;
-import com.example.demo.model.Product;
 import com.example.demo.repositories.CustomerRepository;
 import com.example.demo.repositories.OrdersRepository;
 import com.example.demo.repositories.PaymentRepository;
@@ -28,8 +25,8 @@ public class PaymentController {
     @Autowired
     private PaymentRepository paymentRepository;
 
-    @PostMapping(path ="/add/{reference}/{status}")
-    public String addOrUpdatePayment(@PathVariable String reference, @PathVariable String status){
+    @PostMapping(path ="/add")
+    public String addOrUpdatePayment(@RequestParam String reference, @RequestParam String status){
 
             Payment payment = paymentRepository.findByReference(reference)
                     .orElse(new Payment(reference, status));
@@ -47,10 +44,6 @@ public class PaymentController {
     public @ResponseBody Iterable<Payment> getAllPayments() {
         return paymentRepository.findAll();
     }
-
-
-
-
 
 
 
