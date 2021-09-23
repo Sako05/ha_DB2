@@ -46,7 +46,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
                 filterChain.doFilter(request, response);
             } catch (Exception exception) {
                 log.error("Error loggin in: {}", exception.getMessage());
-                response.setHeader("erroe", exception.getMessage());
+                response.setHeader("error", exception.getMessage());
                 response.setStatus(HttpStatus.FORBIDDEN.value());
                 Map<String, String> error = new HashMap<>();
                 error.put("error_message", exception.getMessage());

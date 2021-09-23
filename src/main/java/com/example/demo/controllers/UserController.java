@@ -47,11 +47,11 @@ public class UserController {
     }
 
 
-    @Data
-    class  RoleToUserForm{
-        private String username;
-        private String roleName;
+
     }
 
-
+@Data
+class  RoleToUserForm{
+    private String username;
+    private String roleName;
 }
